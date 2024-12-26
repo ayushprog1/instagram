@@ -53,15 +53,22 @@ function App() {
   const { socket } = useSelector(store => store.socketio);
   const dispatch = useDispatch();
 
+  
+  console.log('frontend hi');
   useEffect(() => {
     if (user) {
-      const socketio = io('http://localhost:8000', {
+      const socketio = io(process.env.URL, {
         query: {
           userId: user?._id
         },
         transports: ['websocket']
       });
+      console.log("frontend ke taraf");
       dispatch(setSocket(socketio));
+
+      socketio.on('connect', () => {
+        console.log('Socket connected:', socketio.id);
+    });
 
       // listen all the events
       socketio.on('getOnlineUsers', (onlineUsers) => {

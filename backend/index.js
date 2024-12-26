@@ -16,18 +16,18 @@ const PORT = process.env.PORT || 3000;
 const __dirname = path.resolve();
 
 
-app.get("/",(_,res)=>{
-    return res.status(200).json({
-        message:"I'm coming from backend",
-        success:true
-    })
-})
+// app.get("/",(_,res)=>{
+//     return res.status(200).json({
+//         message:"I'm coming from backend",
+//         success:true
+//     })
+// })
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
 app.use(urlencoded({extended:true}));
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: process.env.URL,
     credentials : true
 };
 app.use(cors(corsOptions));
