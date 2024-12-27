@@ -54,7 +54,7 @@ function App() {
   const dispatch = useDispatch();
 
   
-  console.log('frontend hi');
+  //console.log('frontend hi');
   useEffect(() => {
     if (user) {
       const socketio = io(process.env.URL, {

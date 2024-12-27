@@ -25,7 +25,7 @@ const ChatPage = () => {
                 withCredentials:true
             });
             if(res.data.success){
-                console.log(res.data);
+                //console.log(res.data);
                 dispatch(setMessages([...messages , res.data.newMessage]));
                 setTextMessage("");
             }
