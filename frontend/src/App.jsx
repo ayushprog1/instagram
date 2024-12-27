@@ -63,7 +63,7 @@ function App() {
         },
         transports: ['websocket']
       });
-      console.log("frontend ke taraf");
+      //console.log("frontend ke taraf");
       dispatch(setSocket(socketio));
 
       socketio.on('connect', () => {

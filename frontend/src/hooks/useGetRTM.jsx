@@ -7,12 +7,12 @@ const useGetRTM = () => {
     const {socket} = useSelector(store=>store.socketio);
     const {messages} = useSelector(store=>store.chat);
     useEffect(() => {
-        socket?.on('newMessage',(newMessage) =>{
+        socket?.on('new message',(newMessage) =>{
             dispatch(setMessages([...messages,newMessage]))
         })
 
         return() =>{
-            socket?.off('newMessage');
+            socket?.off('new message');
         }
     }, [messages,setMessages]);
 };

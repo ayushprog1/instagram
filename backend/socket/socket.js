@@ -14,25 +14,25 @@ const io = new Server(server, {
 });
 
 const userSocketMap = {}; //this map stores socket id corresponding the user id ;userId -> socketId
-console.log("Current userSocketMap abefire user disconnection:", userSocketMap);
+//console.log("Current userSocketMap abefire user disconnection:", userSocketMap);
 export const getReceiverSocketId = (receiverId) => userSocketMap[receiverId];
 
-console.log("hello");
+//console.log("hello");
 io.on('connection', (socket)=>{
-    console.log("user connected");
+    //console.log("user connected");
     const userId = socket.handshake.query.userId;
     if(userId){
         userSocketMap[userId] = socket.id;
         console.log(`user connected: ${userId} , ${socket.id}`);
-    }else{
-        console.log("user not connected");
+    }//else{
+    //     console.log("user not connected");
 
-    }
+    // }
     
 
     io.emit('getOnlineUsers', Object.keys(userSocketMap));
 
-    console.log("Current userSocketMap after user disconnection:", userSocketMap);
+    //console.log("Current userSocketMap after user disconnection:", userSocketMap);
     socket.on('disconnect',()=>{
         if(userId){
             console.log(`user disconnected: ${userId} , ${socket.id}`);
